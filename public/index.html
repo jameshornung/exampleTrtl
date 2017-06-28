@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Candidates</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header>
+          <h2>trtlJR: Prospect Entry</h2>
+      </header>
+
+      <div id="formHolder">
+        <div id="inputFormHolder">
+          <h3>Enter New Prospect</h3>
+          <form class="inputForm">
+        		First Name:<input type="text" id="firstName"><br>
+        		Last Name:<input type="text" id="lastName"><br>
+            <!-- University:<input type="text" id="university"><br> -->
+            <select id="university">
+              <option value="Berkeley">Berkeley</option>
+              <option value="Cambridge">Cambridge</option>
+              <option value="Rutgers">Rutgers</option>
+              <option value="Texas">Texas</option>
+              <option value="UCF">UCF</option>
+            </select>
+          <select id="status">
+            <option value="Pending HR">Pending HR Interview</option>
+            <option value="Pending Tech">Pending Tech Interview</option>
+            <option value="Pending Final">Pending Final Interview</option>
+          </select>
+            
+          </select>
+            <div class="submitButtonHolder">
+              <button class="submitButton" type="submit" id="addProspect">Submit</button>
+            </div>
+      	  </form>
+        </div>
+
+        <div id="updateFormHolder">
+          <h3>Update Existing Prospect</h3>
+          <form class="updateForm">
+            First Name:<input type="text" id="updateFirstName"><br>
+            Last Name:<input type="text" id="updateLastName"><br>
+            <!-- University:<input type="text" id="updateUniversity"><br> -->
+            <select id="updateUniversity">
+              <option value="Berkeley">Berkeley</option>
+              <option value="Cambridge">Cambridge</option>
+              <option value="Rutgers">Rutgers</option>
+              <option value="Texas">Texas</option>
+              <option value="UCF">UCF</option>
+            </select>
+            <select id="updateStatus">
+              <option value="Pending Hr">Pending HR Interview</option>
+              <option value="Pending Tech">Pending Tech Interview</option>
+              <option value="Pending Final">Pending Final Interview</option>
+            </select>
+          </form>
+          <div class="submitButtonHolder" id="updateButtonHolder">
+          </div>
+        </div>
+      </div>
+
+      <div id="searchFilters">
+        <h3>Filter Prospects</h3>
+        <div id="showAll">
+          <button id="all" class="filterButton">Show All Prospects</button>
+        </div>
+        <div id="createFilters">
+          <form id="filterForm">
+            <select>
+              <option value="Berkeley">Berkeley</option>
+              <option value="Cambridge">Cambridge</option>
+              <option value="Rutgers">Rutgers</option>
+              <option value="Texas">Texas</option>
+              <option value="UCF">UCF</option>
+            </select> 
+          </form>
+        </div>
+        <div class="submitButtonHolder">
+              <button class="submitButton" type="submit" id="filtersSubmitButton">Submit</button>
+          </div>
+      </div>
+
+      <div id="displayProspects">
+        <h3>Prospects</h3>
+        <div id="results">
+          <!-- <table id="prospects">
+            <thead>
+              <tr>
+                <th id="displayName">First Name</th>
+                <th id="displayUniversity">University</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+            </tbody>
+          </table>  -->
+        </div>
+      </div>
+
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
