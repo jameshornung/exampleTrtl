@@ -91,6 +91,23 @@ app.get("/find/:id", function(req, res) {
 });
 
 
+app.get("/find/:university", function(req, res) {
+  console.log("check");
+   db.prospects.find({
+    "university": "Texas"
+  }, function(error, found) {
+    if (error) {
+      console.log(error);
+      res.send(error);
+    }
+    else {
+      console.log(found);
+      res.send(found);
+    }
+  });
+});
+
+
 //-----
 //Post Requests
 //-----

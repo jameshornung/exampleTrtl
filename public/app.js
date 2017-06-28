@@ -142,3 +142,22 @@ $(document).on("click", "#updater", function() {
   });
 });
 
+// WORK ON THIS FUNCTION
+
+$(document).on("click", "#filtersSubmitButton", function() {
+  
+  var university = $("#filterUniversity").val();
+  var status = $("#filterStatus").val();
+
+  // console.log("university", university);
+  // console.log("status", status);
+  
+  $.ajax({
+    type: "GET",
+    url: "/find/" + university,
+    success: function(data) {
+      console.log("data", data);
+    }
+  });
+});
+
