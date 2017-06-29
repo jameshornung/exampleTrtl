@@ -98,7 +98,7 @@ $(document).on("click", ".update", function() {
   // This uses the data-id of the p-tag, which is linked to the specific prospect
   $.ajax({
     type: "GET",
-    url: "/find/" + selected.attr("data-id"),
+    url: "/find-one/" + selected.attr("data-id"),
     success: function(data) {
       // Fill the inputs on the update form with the data that the ajax call collected
       $("#updateFirstName").val(data.firstName);
@@ -156,7 +156,12 @@ $(document).on("click", "#filtersSubmitButton", function() {
     type: "GET",
     url: "/find/" + university,
     success: function(data) {
-      console.log("data", data);
+
+      for (var i = 0; i < data.length; i++) {
+      $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
+      data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
+    }
+  
     }
   });
 });

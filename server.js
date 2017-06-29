@@ -75,7 +75,7 @@ app.get("/delete/:id", function(req, res) {
 });
 
 
-app.get("/find/:id", function(req, res) {
+app.get("/find-one/:id", function(req, res) {
   db.prospects.findOne({
     "_id": mongojs.ObjectId(req.params.id)
   }, function(error, found) {
@@ -94,7 +94,7 @@ app.get("/find/:id", function(req, res) {
 app.get("/find/:university", function(req, res) {
   console.log("check");
    db.prospects.find({
-    "university": "Texas"
+    "university": req.params.university
   }, function(error, found) {
     if (error) {
       console.log(error);
@@ -106,6 +106,19 @@ app.get("/find/:university", function(req, res) {
     }
   });
 });
+
+// app.get("/find", function(req, res){
+  
+
+//   db.prospects.find({"university": university}, function(error, found) {
+//     if (error) {
+//       console.log(error);
+//     }
+//     else {
+//       res.json(found);
+//     }
+//   });
+// })
 
 
 //-----
