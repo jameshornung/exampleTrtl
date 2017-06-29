@@ -90,11 +90,29 @@ app.get("/find-one/:id", function(req, res) {
   });
 });
 
+// WORKS TO FILTER BY UNIVERSITY
 
 app.get("/find/:university", function(req, res) {
-  
+  console.log("req.query", req.query)
    db.prospects.find({
     "university": req.params.university
+  }, function(error, found) {
+    if (error) {
+      console.log(error);
+      res.send(error);
+    }
+    else {
+      console.log(found);
+      res.send(found);
+    }
+  });
+});
+
+app.get("/filter/", function(req, res) {
+  console.log("req.query", req.query)
+   db.prospects.find({
+    "university": req.query.university,
+    "status": req.query.status
   }, function(error, found) {
     if (error) {
       console.log(error);

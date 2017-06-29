@@ -143,19 +143,37 @@ $(document).on("click", "#updater", function() {
 });
 
 // WORK ON THIS FUNCTION
+// $(document).on("click", "#filtersSubmitButton", function() {
+  
+//   var university = $("#filterUniversity").val();
+
+//   $.ajax({
+//     type: "GET",
+//     url: "/find/" + university,
+//     success: function(data) {
+
+//       $("#results").empty();
+//       for (var i = 0; i < data.length; i++) {
+//       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
+//       data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
+//     }
+  
+//     }
+//   });
+// });
 
 
 $(document).on("click", "#filtersSubmitButton", function() {
   
   var university = $("#filterUniversity").val();
+  var status = $("#filterStatus").val();
 
   $.ajax({
     type: "GET",
-    url: "/find/" + university,
+    url: "/filter?university=" + university + "&status=" + status,
     success: function(data) {
-      console.log("function ran")
-      console.log(data.length);
 
+      $("#results").empty();
       for (var i = 0; i < data.length; i++) {
       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
       data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
