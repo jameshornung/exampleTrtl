@@ -92,7 +92,7 @@ app.get("/find-one/:id", function(req, res) {
 
 
 app.get("/find/:university", function(req, res) {
-  console.log("check");
+  
    db.prospects.find({
     "university": req.params.university
   }, function(error, found) {
@@ -106,19 +106,6 @@ app.get("/find/:university", function(req, res) {
     }
   });
 });
-
-// app.get("/find", function(req, res){
-  
-
-//   db.prospects.find({"university": university}, function(error, found) {
-//     if (error) {
-//       console.log(error);
-//     }
-//     else {
-//       res.json(found);
-//     }
-//   });
-// })
 
 
 //-----

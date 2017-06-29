@@ -144,18 +144,17 @@ $(document).on("click", "#updater", function() {
 
 // WORK ON THIS FUNCTION
 
+
 $(document).on("click", "#filtersSubmitButton", function() {
   
   var university = $("#filterUniversity").val();
-  var status = $("#filterStatus").val();
 
-  // console.log("university", university);
-  // console.log("status", status);
-  
   $.ajax({
     type: "GET",
     url: "/find/" + university,
     success: function(data) {
+      console.log("function ran")
+      console.log(data.length);
 
       for (var i = 0; i < data.length; i++) {
       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
@@ -165,4 +164,5 @@ $(document).on("click", "#filtersSubmitButton", function() {
     }
   });
 });
+
 
