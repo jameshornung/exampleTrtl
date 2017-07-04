@@ -90,41 +90,31 @@ app.get("/find-one/:id", function(req, res) {
   });
 });
 
-// WORKS TO FILTER BY UNIVERSITY
-
-app.get("/find/:university", function(req, res) {
-  console.log("req.query", req.query)
-   db.prospects.find({
-    "university": req.params.university
-  }, function(error, found) {
-    if (error) {
-      console.log(error);
-      res.send(error);
-    }
-    else {
-      console.log(found);
-      res.send(found);
-    }
-  });
-});
+// +++++
+// Filter By Custom Parameters
+// +++++
 
 app.get("/filter/", function(req, res) {
+
+  var query = {};
   console.log("req.query", req.query)
-   db.prospects.find({
-    "university": req.query.university,
-    "status": req.query.status
-  }, function(error, found) {
+
+  if(req.query.university) { query.university = req.query.university }
+  if(req.query.status){ query.status = req.query.status }
+
+  console.log("query = ", query);
+
+  db.prospects.find(query, function(error, found) {
     if (error) {
       console.log(error);
       res.send(error);
     }
     else {
-      console.log(found);
+      console.log("found = ", found);
       res.send(found);
     }
   });
 });
-
 
 //-----
 //Post Requests

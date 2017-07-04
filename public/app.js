@@ -142,7 +142,7 @@ $(document).on("click", "#updater", function() {
   });
 });
 
-// WORK ON THIS FUNCTION
+// FILTER BY UNIVERSITY
 // $(document).on("click", "#filtersSubmitButton", function() {
   
 //   var university = $("#filterUniversity").val();
@@ -182,5 +182,7 @@ $(document).on("click", "#filtersSubmitButton", function() {
     }
   });
 });
+
+
 
 
