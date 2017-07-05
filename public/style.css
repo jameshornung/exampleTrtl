@@ -11,7 +11,7 @@
 	width: 100%;
 }
 
-#inputFormHolder{
+.inputForms{
 	overflow: auto;
 	width: 30%;
 	float: left;
@@ -21,15 +21,6 @@
 	overflow: auto;
 }
 
-#updateFormHolder{
-	overflow: auto;
-	width: 30%;
-	float: left;
-	margin-left: 40px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	overflow: auto;
-}
 
 input{
 	width: 90%;
@@ -59,20 +50,17 @@ input{
 	border: 2px solid black;
 }
 
-/*#showAll{
-	height: 100%;
-	width: 20%;
-}
-*/
-#all{
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 15px;
-	padding-right: 15px;
-	font-weight: bold;
-	font-size: 12px;
+/*Show All Prospects Button*/
+#allProspects{
 	color: white;
 	background-color: green;
+	margin-left: 10px;
+}
+
+/*Show All Schools Button*/
+#allSchools{
+	color: white;
+	background-color: orange;
 	margin-left: 10px;
 }
 

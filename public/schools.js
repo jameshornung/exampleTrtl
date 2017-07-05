@@ -1,12 +1,8 @@
-
-//++++++++++++++++++++
-// CLICK EVENTS
-//++++++++++++++++++++
-
-$(document).on("click", "#allProspects", function(){
+$(document).on("click", "#all", function(){
   $("#results").empty();
 
   $.getJSON("/all", function(data) {
+    // console.log("data= ", data);
 
     for (var i = 0; i < data.length; i++) {
       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
@@ -116,6 +112,26 @@ $(document).on("click", "#updater", function() {
   });
 });
 
+// FILTER BY UNIVERSITY
+// $(document).on("click", "#filtersSubmitButton", function() {
+  
+//   var university = $("#filterUniversity").val();
+
+//   $.ajax({
+//     type: "GET",
+//     url: "/find/" + university,
+//     success: function(data) {
+
+//       $("#results").empty();
+//       for (var i = 0; i < data.length; i++) {
+//       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
+//       data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
+//     }
+  
+//     }
+//   });
+// });
+
 
 $(document).on("click", "#filtersSubmitButton", function() {
   
@@ -136,41 +152,3 @@ $(document).on("click", "#filtersSubmitButton", function() {
     }
   });
 });
-
-
-// UNIVERSITY FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-$(document).on("click", "#addUniversity", function() {
-  $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "/submit-school",
-    data: {
-      universityName: $("#universityName").val(),
-      campusLocation: $("#campusLocation").val(),
-      created: Date.now()
-    }
-  })
-  .done(function(data) {
-    
-    $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
-      data._id + ">" + data.universityName + " " + data.campusLocation + " " +  "</span><span class=deleter updateProspect>Delete</span><span class=update updateProspect>Edit</span></p>");
-
-    $("#universityName").val("");
-    $("#campusLocation").val("");
-  });
-});
-
-$(document).on("click", "#allSchools", function(){
-  $("#results").empty();
-
-  $.getJSON("/all-schools", function(data) {
-
-    for (var i = 0; i < data.length; i++) {
-      $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
-      data[i]._id + ">" + data[i].universityName + " " + data[i].campusLocation + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
-    }
-  })
-});
-
-

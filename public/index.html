@@ -13,8 +13,10 @@
           <h2>trtlJR: Prospect Entry</h2>
       </header>
 
+      <!-- Prospect Input Form -->
+
       <div id="formHolder">
-        <div id="inputFormHolder">
+        <div class="inputForms">
           <h3>Enter New Prospect</h3>
           <form class="inputForm">
         		First Name:<input type="text" id="firstName"><br>
@@ -32,15 +34,15 @@
             <option value="Pending Tech">Pending Tech Interview</option>
             <option value="Pending Final">Pending Final Interview</option>
           </select>
-            
-          </select>
             <div class="submitButtonHolder">
               <button class="submitButton" type="submit" id="addProspect">Submit</button>
             </div>
       	  </form>
         </div>
 
-        <div id="updateFormHolder">
+        <!-- Prospect Update Form -->
+
+        <div class="inputForms"">
           <h3>Update Existing Prospect</h3>
           <form class="updateForm">
             First Name:<input type="text" id="updateFirstName"><br>
@@ -65,10 +67,35 @@
         </div>
       </div>
 
+      <!-- University Input Form -->
+
+      <div class="inputForms">
+        <div id="universityInputFormHolder">
+          <h3>Enter New University</h3>
+          <form class="inputForm">
+            University Name:<input type="text" id="universityName"><br>
+            Campus Location:<input type="text" id="campusLocation"><br>
+            
+            <!-- <select id="cohorts">
+              <option value="Start Date 1">Start Date 1</option>
+              <option value="Start Date 2">Start Date 2</option>
+              <option value="Start Date 3">Start Date 3</option>
+              <option value="Start Date 4">Start Date 4</option>
+              <option value="Start Date 5">Start Date 5</option>
+            </select> -->
+            <div class="submitButtonHolder">
+              <button class="submitButton" type="submit" id="addUniversity">Submit</button>
+            </div>
+          </form>
+        </div>
+
+      <!-- Prospect Search Parameters -->
+
       <div id="searchFilters">
         <h3>Filter Prospects</h3>
         <div id="showAll">
-          <button id="all" class="filterButton">Show All Prospects</button>
+          <button id="allProspects" class="filterButton">Show All Prospects</button>
+          <button id="allSchools" class="filterButton">Show All Schools</button>
         </div>
         <div id="createFilters">
           <form id="filterForm">
@@ -86,7 +113,6 @@
               <option value="Pending Tech">Pending Tech Interview</option>
               <option value="Pending Final">Pending Final Interview</option>
             </select>
-           
           </form>
         </div>
         <div class="submitButtonHolder">
@@ -94,21 +120,11 @@
         </div>
       </div>
 
+      <!-- Div for displaying search results -->
+
       <div id="displayProspects">
         <h3>Prospects</h3>
-        <div id="results">
-          <!-- <table id="prospects">
-            <thead>
-              <tr>
-                <th id="displayName">First Name</th>
-                <th id="displayUniversity">University</th>
-              </tr>
-            </thead>
-            <tbody>
-             
-            </tbody>
-          </table>  -->
-        </div>
+        <div id="results"></div>
       </div>
 
     </div>

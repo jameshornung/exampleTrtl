@@ -24,7 +24,7 @@ app.use(express.static("public"));
 //++++++++++++++++++++
 
 var databaseUrl = "trtlJR";
-var collections = ["prospects"];
+var collections = ["prospects", "schools"];
 
 // Hook mongojs config to db variable
 var db = mongojs(databaseUrl, collections);
@@ -46,7 +46,6 @@ app.get("/", function(req, res) {
   res.send(index.html);
 });
 
-
 app.get("/all", function(req, res) {
   db.prospects.find({}, function(error, found) {
     if (error) {
@@ -57,7 +56,6 @@ app.get("/all", function(req, res) {
     }
   });
 });
-
 
 app.get("/delete/:id", function(req, res) {
   db.prospects.remove({
@@ -73,7 +71,6 @@ app.get("/delete/:id", function(req, res) {
     }
   });
 });
-
 
 app.get("/find-one/:id", function(req, res) {
   db.prospects.findOne({
@@ -116,13 +113,27 @@ app.get("/filter/", function(req, res) {
   });
 });
 
+// ++++++++++++
+// SCHOOLS COLLECTION 
+// ++++++++++++
+
+app.get("/all-schools", function(req, res) {
+  db.schools.find({}, function(error, found) {
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.json(found);
+    }
+  });
+});
+
 //-----
 //Post Requests
 //-----
 
 app.post("/submit", function(req, res) {
   db.prospects.insert(req.body, function(error, saved) {
-    // Log any errors
     if (error) {
       console.log(error);
     }
@@ -131,7 +142,6 @@ app.post("/submit", function(req, res) {
     }
   });
 });
-
 
 app.post("/update/:id", function(req, res) {
   db.prospects.update({
@@ -156,11 +166,26 @@ app.post("/update/:id", function(req, res) {
   });
 });
 
+// ++++++++++++
+// SCHOOLS COLLECTION 
+// ++++++++++++
+
+app.post("/submit-school", function(req, res) {
+  db.schools.insert(req.body, function(error, saved) {
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.send(saved);
+    }
+  });
+});
+
 
 //++++++++++++++++++++
 //LISTEN ON PORT 3000
 //++++++++++++++++++++
 
 app.listen(3000, function() {
-  console.log("App running on port 3000!");
+  console.log("Success: Running on Port 3000");
 });
