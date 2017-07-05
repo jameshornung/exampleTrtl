@@ -181,6 +181,27 @@ app.post("/submit-school", function(req, res) {
   });
 });
 
+app.post("/update-school/:id", function(req, res) {
+  db.prospects.update({
+    "_id": mongojs.ObjectId(req.params.id)
+  }, {
+    $set: {
+      "universityName": req.body.universityName,
+      "campusLocation": req.body.campusLocation,
+      "modified": Date.now()
+    }
+  }, function(error, edited) {
+    if (error) {
+      console.log(error);
+      res.send(error);
+    }
+    else {
+      console.log(edited);
+      res.send(edited);
+    }
+  });
+});
+
 
 //++++++++++++++++++++
 //LISTEN ON PORT 3000

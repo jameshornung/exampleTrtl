@@ -80,7 +80,7 @@ $(document).on("click", ".update", function() {
       $("#updateUniversity").val(data.university);
       $("#updateStatus").val(data.status);
       // Add a submit button to the form
-      $("#updateButtonHolder").html("<button class='submitButton' id='updater' data-id='" + data._id + "'>Submit</button>");
+      $("#updateButtonHolder").html("<button class='submitButton updateSchool' id='updater' data-id='" + data._id + "'>Submit</button>");
     }
   });
 });
@@ -154,7 +154,7 @@ $(document).on("click", "#addUniversity", function() {
   .done(function(data) {
     
     $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
-      data._id + ">" + data.universityName + " " + data.campusLocation + " " +  "</span><span class=deleter updateProspect>Delete</span><span class=update updateProspect>Edit</span></p>");
+      data._id + ">" + data.universityName + " " + data.campusLocation + " " +  "</span><span class=deleter updateProspect>Delete</span><span class=update updateSchool>Edit</span></p>");
 
     $("#universityName").val("");
     $("#campusLocation").val("");
@@ -173,4 +173,31 @@ $(document).on("click", "#allSchools", function(){
   })
 });
 
+// Click "Update" button (submit update form)
+$(document).on("click", "#updateSchool", function() {
+  // Save the selected element
+  var selected = $(this);
+  // console.log("this ", this);
+  $.ajax({
+    type: "POST",
+    url: "/update-school/" + selected.attr("data-id"),
+    dataType: "json",
+    data: {
+      universityName: $("#updateUniversityName").val(),
+      campusLocation: $("#updateCampusLocation").val()
+    },
+    // On successful call
+    success: function(data) {
+      // Clear the inputs
+      $("#updateUniversityName").val("");
+      $("#updateCampusLocation").val("");
+
+      //remove the update button
+      $("#updateButtonHolder").empty();
+
+      //empty the results div
+      $("#results").empty();
+    }
+  });
+});
 
