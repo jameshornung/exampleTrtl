@@ -128,6 +128,36 @@ app.get("/all-schools", function(req, res) {
   });
 });
 
+app.get("/delete-school/:id", function(req, res) {
+  db.schools.remove({
+    "_id": mongojs.ObjectID(req.params.id)
+  }, function(error, removed) {
+    if (error) {
+      console.log(error);
+      res.send(error);
+    }
+    else {
+      console.log(removed);
+      res.send(removed);
+    }
+  });
+});
+
+app.get("/find-one-school/:id", function(req, res) {
+  db.schools.findOne({
+    "_id": mongojs.ObjectId(req.params.id)
+  }, function(error, found) {
+    if (error) {
+      console.log(error);
+      res.send(error);
+    }
+    else {
+      console.log(found);
+      res.send(found);
+    }
+  });
+});
+
 //-----
 //Post Requests
 //-----
@@ -166,6 +196,7 @@ app.post("/update/:id", function(req, res) {
   });
 });
 
+
 // ++++++++++++
 // SCHOOLS COLLECTION 
 // ++++++++++++
@@ -182,7 +213,7 @@ app.post("/submit-school", function(req, res) {
 });
 
 app.post("/update-school/:id", function(req, res) {
-  db.prospects.update({
+  db.schools.update({
     "_id": mongojs.ObjectId(req.params.id)
   }, {
     $set: {
@@ -201,7 +232,6 @@ app.post("/update-school/:id", function(req, res) {
     }
   });
 });
-
 
 //++++++++++++++++++++
 //LISTEN ON PORT 3000

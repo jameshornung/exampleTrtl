@@ -1,4 +1,4 @@
-.deleter{
+/*.deleter{
 	color: red;
 	font-size: 15px;
 	font-weight: bold;
@@ -50,14 +50,7 @@ input{
 	border: 2px solid black;
 }
 
-/*Show All Prospects Button*/
-#allProspects{
-	color: white;
-	background-color: green;
-	margin-left: 10px;
-}
 
-/*Show All Schools Button*/
 #allSchools{
 	color: white;
 	background-color: orange;
@@ -66,6 +59,6 @@ input{
 
 #createFilters{
 	padding: 10px;
-}
+}*/
 
 

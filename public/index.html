@@ -1,135 +1,164 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Candidates</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div id="wrapper">
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Mini TRTL</title>
 
-      <header>
-          <h2>trtlJR: Prospect Entry</h2>
-      </header>
+      <!-- Import Materialize -->
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
 
-      <!-- Prospect Input Form -->
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
 
-      <div id="formHolder">
-        <div class="inputForms">
-          <h3>Enter New Prospect</h3>
-          <form class="inputForm">
-        		First Name:<input type="text" id="firstName"><br>
-        		Last Name:<input type="text" id="lastName"><br>
-            <!-- University:<input type="text" id="university"><br> -->
-            <select id="university">
-              <option value="Berkeley">Berkeley</option>
-              <option value="Cambridge">Cambridge</option>
-              <option value="Rutgers">Rutgers</option>
-              <option value="Texas">Texas</option>
-              <option value="UCF">UCF</option>
-            </select>
-          <select id="status">
-            <option value="Pending HR">Pending HR Interview</option>
-            <option value="Pending Tech">Pending Tech Interview</option>
-            <option value="Pending Final">Pending Final Interview</option>
-          </select>
-            <div class="submitButtonHolder">
-              <button class="submitButton" type="submit" id="addProspect">Submit</button>
-            </div>
-      	  </form>
-        </div>
+    <body>
+      <div>
+        <header>
+            <h2>trtlJR: Prospect Entry</h2>
+        </header>
 
-        <!-- Prospect Update Form -->
+        <div class="row">
 
-        <div class="inputForms"">
-          <h3>Update Existing Prospect</h3>
-          <form class="updateForm">
-            First Name:<input type="text" id="updateFirstName"><br>
-            Last Name:<input type="text" id="updateLastName"><br>
-            <!-- University:<input type="text" id="updateUniversity"><br> -->
-            <select id="updateUniversity">
-              <option value="Berkeley">Berkeley</option>
-              <option value="Cambridge">Cambridge</option>
-              <option value="Rutgers">Rutgers</option>
-              <option value="Texas">Texas</option>
-              <option value="UCF">UCF</option>
-            </select>
-            <select id="updateStatus">
-              <option>All</option>
+         <!-- Prospect Input Form -->
+
+          <div class="col m3">
+            <h5>Enter New Prospect</h5>
+            <form>
+              First Name:<input type="text" id="firstName"><br>
+              Last Name:<input type="text" id="lastName"><br>
+              <!-- University:<input type="text" id="university"><br> -->
+              <select id="university">
+                <option value="Berkeley">Berkeley</option>
+                <option value="Cambridge">Cambridge</option>
+                <option value="Rutgers">Rutgers</option>
+                <option value="Texas">Texas</option>
+                <option value="UCF">UCF</option>
+              </select>
+            <select id="status">
               <option value="Pending HR">Pending HR Interview</option>
               <option value="Pending Tech">Pending Tech Interview</option>
               <option value="Pending Final">Pending Final Interview</option>
             </select>
-          </form>
-          <div class="submitButtonHolder" id="updateButtonHolder">
+              <div class="submitButtonHolder">
+                <button class="submitButton" type="submit" id="addProspect">Submit</button>
+              </div>
+            </form>
           </div>
-        </div>
-      </div>
 
-      <!-- University Input Form -->
+          <!-- Prospect Update Form -->
 
-      <div class="inputForms">
-        <div id="universityInputFormHolder">
-          <h3>Enter New University</h3>
-          <form class="inputForm">
-            University Name:<input type="text" id="universityName"><br>
-            Campus Location:<input type="text" id="campusLocation"><br>
-            
-            <!-- <select id="cohorts">
-              <option value="Start Date 1">Start Date 1</option>
-              <option value="Start Date 2">Start Date 2</option>
-              <option value="Start Date 3">Start Date 3</option>
-              <option value="Start Date 4">Start Date 4</option>
-              <option value="Start Date 5">Start Date 5</option>
-            </select> -->
-            <div class="submitButtonHolder">
-              <button class="submitButton" type="submit" id="addUniversity">Submit</button>
+          <div class="col m3">
+            <h5>Update Existing Prospect</h5>
+            <form class="updateForm">
+              First Name:<input type="text" id="updateFirstName"><br>
+              Last Name:<input type="text" id="updateLastName"><br>
+              <!-- University:<input type="text" id="updateUniversity"><br> -->
+              <select id="updateUniversity">
+                <option value="Berkeley">Berkeley</option>
+                <option value="Cambridge">Cambridge</option>
+                <option value="Rutgers">Rutgers</option>
+                <option value="Texas">Texas</option>
+                <option value="UCF">UCF</option>
+              </select>
+              <select id="updateStatus">
+                <option>All</option>
+                <option value="Pending HR">Pending HR Interview</option>
+                <option value="Pending Tech">Pending Tech Interview</option>
+                <option value="Pending Final">Pending Final Interview</option>
+              </select>
+            </form>
+            <div class="submitButtonHolder" id="updateButtonHolder">
             </div>
-          </form>
+          </div>
+
+           <!-- University Input Form -->
+
+          <div class="col m3">
+            <div>
+              <h5>Enter New University</h5>
+              <form>
+                University Name:<input type="text" id="universityName"><br>
+                Campus Location:<input type="text" id="campusLocation"><br>
+                
+                <!-- <select id="cohorts">
+                  <option value="Start Date 1">Start Date 1</option>
+                  <option value="Start Date 2">Start Date 2</option>
+                  <option value="Start Date 3">Start Date 3</option>
+                  <option value="Start Date 4">Start Date 4</option>
+                  <option value="Start Date 5">Start Date 5</option>
+                </select> -->
+                <div class="submitButtonHolder">
+                  <button class="submitButton" type="submit" id="addUniversity">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+            <!--  University Update Form -->
+
+            <div class="col m3">
+              <h5>Update Existing University</h5>
+              <form>
+                University Name:<input type="text" id="updateUniversityName"><br>
+                Campus Location:<input type="text" id="updateCampusLocation"><br>
+              </form>
+              <div class="submitButtonHolder" id="schoolUpdateButtonHolder"></div>
+            </div>
+
+          <!-- Row End -->
+          </div>
+
+          <div class="row">
+
+           <!-- Prospect Search Parameters -->
+
+            <div class="col m4">
+              <h5>Filter Prospects</h5>
+              <button id="allProspects" class="filterButton">Show All Prospects</button>
+              <button id="allSchools" class="filterButton">Show All Schools</button>
+              
+              <form>
+                <select id="filterUniversity">
+                  <option value="">All</option>
+                  <option value="Berkeley">Berkeley</option>
+                  <option value="Cambridge">Cambridge</option>
+                  <option value="Rutgers">Rutgers</option>
+                  <option value="Texas">Texas</option>
+                  <option value="UCF">UCF</option>
+                </select> 
+                <select id="filterStatus">
+                  <option value="">All</option>
+                  <option value="Pending HR">Pending HR Interview</option>
+                  <option value="Pending Tech">Pending Tech Interview</option>
+                  <option value="Pending Final">Pending Final Interview</option>
+                </select>
+              </form>
+        
+              <div class="submitButtonHolder">
+                <button class="submitButton" type="submit" id="filtersSubmitButton">Submit</button>
+              </div>
+            </div>
+
+            <!-- Results Div -->
+
+            <div class="col m8" id="results">
+              
+            </div>
+          <!-- Row End -->
+          </div>
+
+        <!-- Container End -->
         </div>
 
-      <!-- Prospect Search Parameters -->
-
-      <div id="searchFilters">
-        <h3>Filter Prospects</h3>
-        <div id="showAll">
-          <button id="allProspects" class="filterButton">Show All Prospects</button>
-          <button id="allSchools" class="filterButton">Show All Schools</button>
-        </div>
-        <div id="createFilters">
-          <form id="filterForm">
-            <select id="filterUniversity">
-              <option value="">All</option>
-              <option value="Berkeley">Berkeley</option>
-              <option value="Cambridge">Cambridge</option>
-              <option value="Rutgers">Rutgers</option>
-              <option value="Texas">Texas</option>
-              <option value="UCF">UCF</option>
-            </select> 
-            <select id="filterStatus">
-              <option value="">All</option>
-              <option value="Pending HR">Pending HR Interview</option>
-              <option value="Pending Tech">Pending Tech Interview</option>
-              <option value="Pending Final">Pending Final Interview</option>
-            </select>
-          </form>
-        </div>
-        <div class="submitButtonHolder">
-          <button class="submitButton" type="submit" id="filtersSubmitButton">Submit</button>
-        </div>
-      </div>
-
-      <!-- Div for displaying search results -->
-
-      <div id="displayProspects">
-        <h3>Prospects</h3>
-        <div id="results"></div>
-      </div>
-
-    </div>
-
-    <script src="app.js"></script>
+        
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+      <script src="app.js"></script>
   </body>
 </html>
-

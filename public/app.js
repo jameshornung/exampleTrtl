@@ -139,7 +139,20 @@ $(document).on("click", "#filtersSubmitButton", function() {
 
 
 // UNIVERSITY FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Working
+$(document).on("click", "#allSchools", function(){
+  $("#results").empty();
 
+  $.getJSON("/all-schools", function(data) {
+
+    for (var i = 0; i < data.length; i++) {
+      $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
+      data[i]._id + ">" + data[i].universityName + " " + data[i].campusLocation + " " + "</span><span class=deleteSchool>Delete</span><span class=updateSchool>Edit</span></p>");
+    }
+  })
+});
+
+// Working
 $(document).on("click", "#addUniversity", function() {
   $.ajax({
     type: "POST",
@@ -154,27 +167,59 @@ $(document).on("click", "#addUniversity", function() {
   .done(function(data) {
     
     $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
-      data._id + ">" + data.universityName + " " + data.campusLocation + " " +  "</span><span class=deleter updateProspect>Delete</span><span class=update updateSchool>Edit</span></p>");
+      data._id + ">" + data.universityName + " " + data.campusLocation + " " +  "</span><span class=deleteSchool>Delete</span><span class=updateSchool>Edit</span></p>");
 
     $("#universityName").val("");
     $("#campusLocation").val("");
   });
 });
 
-$(document).on("click", "#allSchools", function(){
-  $("#results").empty();
 
-  $.getJSON("/all-schools", function(data) {
+// ======= Work in Progress
 
-    for (var i = 0; i < data.length; i++) {
-      $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
-      data[i]._id + ">" + data[i].universityName + " " + data[i].campusLocation + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
+// Click "Delete" (delete a prospect)
+$(document).on("click", ".deleteSchool", function() {
+  // Save the p tag that encloses the button
+  var selected = $(this).parent();
+  // Make an AJAX GET request to delete the specific prospect
+  // this uses the data-id of the p-tag, which is linked to the specific prospect
+  $.ajax({
+    type: "GET",
+    url: "/delete-school/" + selected.attr("data-id"),
+
+    // On successful call
+    success: function(response) {
+      // Remove the p-tag from the DOM
+      selected.remove();
+      // Clear the propsect info
+      $("#schoolName").val("");
+      $("#campusLocation").val("");
     }
-  })
+  });
+});
+
+// Click "Edit" (update a school)
+$(document).on("click", ".updateSchool", function() {
+  // Save the p tag that encloses the button
+  var selected = $(this).parent();
+  // Make an ajax call to find the prospect
+  // This uses the data-id of the p-tag, which is linked to the specific prospect
+  $.ajax({
+    type: "GET",
+    url: "/find-one-school/" + selected.attr("data-id"),
+    success: function(data) {
+      console.log(data);
+      // Fill the inputs on the update form with the data that the ajax call collected
+      $("#updateUniversityName").val(data.schoolName);
+      $("#updateCampusLocation").val(data.campusLocation);
+      // Add a submit button to the form
+      $("#updateButtonHolder").html("<button class='submitButton updateSchoolButton' data-id='" + data._id + "'>Submit</button>");
+    }
+  });
 });
 
 // Click "Update" button (submit update form)
-$(document).on("click", "#updateSchool", function() {
+$(document).on("click", ".updateSchoolButton", function() {
   // Save the selected element
   var selected = $(this);
   // console.log("this ", this);
@@ -193,7 +238,7 @@ $(document).on("click", "#updateSchool", function() {
       $("#updateCampusLocation").val("");
 
       //remove the update button
-      $("#updateButtonHolder").empty();
+      $("#schooUpdateButtonHolder").empty();
 
       //empty the results div
       $("#results").empty();
