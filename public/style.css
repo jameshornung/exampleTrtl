@@ -1,64 +1,39 @@
-/*.deleter{
-	color: red;
-	font-size: 15px;
-	font-weight: bold;
-	cursor: pointer;
-	margin-left: 10px;
+/*++++++++++
+Header and Nav Bar
+++++++++++*/
+
+header{
+	height: 150px;
 }
 
-#formHolder{
-	overflow: auto;
-	width: 100%;
+
+.trtlHeader{
+	line-height: 150px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
-.inputForms{
-	overflow: auto;
-	width: 30%;
-	float: left;
-	margin-left: 40px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	overflow: auto;
+.navSearch{
+	width: 25%;
 }
 
+/*++++++++++
+Input Forms
+++++++++++*/
+
+.inputFormRow{
+	margin-top: 30px;
+	box-sizing: border-box;
+	height: 350px;
+	overflow: auto;
+
+}
+
+.inputFormDiv{
+	padding: 25px !important;
+	height: 100%;
+}
 
 input{
-	width: 90%;
+	height: 20px !important;
 }
-
-.submitButtonHolder{
-	text-align: center;
-}
-
-.submitButton{
-	margin-top: 15px;
-}
-
-#results{
-	width: 100%;
-}
-
-.update{
-	color: green;
-	font-size: 15px;
-	font-weight: bold;
-	margin-left: 10px;
-	cursor: pointer;
-}
-
-#searchFilters{
-	border: 2px solid black;
-}
-
-
-#allSchools{
-	color: white;
-	background-color: orange;
-	margin-left: 10px;
-}
-
-#createFilters{
-	padding: 10px;
-}*/
-
-
