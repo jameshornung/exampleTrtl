@@ -16,11 +16,12 @@
     </head>
 
     <body>
-      <div>
+      
         <header>
-            <h2>trtlJR: Prospect Entry</h2>
+            <h2>miniTRTL</h2>
         </header>
 
+      <div>
         <div class="row">
 
          <!-- Prospect Input Form -->
@@ -58,6 +59,7 @@
               Last Name:<input type="text" id="updateLastName"><br>
               <!-- University:<input type="text" id="updateUniversity"><br> -->
               <select id="updateUniversity">
+                <option value="" disabled selected>Select University</option>
                 <option value="Berkeley">Berkeley</option>
                 <option value="Cambridge">Cambridge</option>
                 <option value="Rutgers">Rutgers</option>
@@ -65,7 +67,7 @@
                 <option value="UCF">UCF</option>
               </select>
               <select id="updateStatus">
-                <option>All</option>
+                <option value="" disabled selected>Select Status</option>
                 <option value="Pending HR">Pending HR Interview</option>
                 <option value="Pending Tech">Pending Tech Interview</option>
                 <option value="Pending Final">Pending Final Interview</option>
@@ -121,7 +123,7 @@
               <button id="allProspects" class="filterButton">Show All Prospects</button>
               <button id="allSchools" class="filterButton">Show All Schools</button>
               
-              <form>
+              <div class="input-field col s12">
                 <select id="filterUniversity">
                   <option value="">All</option>
                   <option value="Berkeley">Berkeley</option>
@@ -130,13 +132,15 @@
                   <option value="Texas">Texas</option>
                   <option value="UCF">UCF</option>
                 </select> 
+              </div>
+              <div class="input-field col s12">
                 <select id="filterStatus">
                   <option value="">All</option>
                   <option value="Pending HR">Pending HR Interview</option>
                   <option value="Pending Tech">Pending Tech Interview</option>
                   <option value="Pending Final">Pending Final Interview</option>
                 </select>
-              </form>
+              </div>
         
               <div class="submitButtonHolder">
                 <button class="submitButton" type="submit" id="filtersSubmitButton">Submit</button>

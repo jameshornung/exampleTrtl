@@ -1,3 +1,10 @@
+//++++++++++++++++++++
+// MATERIALIZE FUNTIONALITY
+//++++++++++++++++++++
+
+ $('select').material_select();
+
+
 
 //++++++++++++++++++++
 // CLICK EVENTS
@@ -68,6 +75,7 @@ $(document).on("click", ".deleter", function() {
 $(document).on("click", ".update", function() {
   // Save the p tag that encloses the button
   var selected = $(this).parent();
+  // console.log("selected = ", selected)
   // Make an ajax call to find the prospect
   // This uses the data-id of the p-tag, which is linked to the specific prospect
   $.ajax({
@@ -80,16 +88,16 @@ $(document).on("click", ".update", function() {
       $("#updateUniversity").val(data.university);
       $("#updateStatus").val(data.status);
       // Add a submit button to the form
-      $("#updateButtonHolder").html("<button class='submitButton updateSchool' id='updater' data-id='" + data._id + "'>Submit</button>");
+      $("#updateButtonHolder").html("<button class='submitButton updateProspect' data-id='" + data._id + "'>Submit</button>");
     }
   });
 });
 
 // Click "Update" button (submit update form)
-$(document).on("click", "#updater", function() {
+$(document).on("click", ".updateProspect", function() {
   // Save the selected element
   var selected = $(this);
-  // console.log("this ", this);
+  console.log("selected ", selected);
   $.ajax({
     type: "POST",
     url: "/update/" + selected.attr("data-id"),
@@ -106,6 +114,7 @@ $(document).on("click", "#updater", function() {
       $("#updateFirstName").val("");
       $("#updateLastName").val("");
       $("updateUniversity").val("");
+      $("updateStatus").val("");
 
       //remove the update button
       $("#updateButtonHolder").empty();
@@ -210,10 +219,10 @@ $(document).on("click", ".updateSchool", function() {
     success: function(data) {
       console.log(data);
       // Fill the inputs on the update form with the data that the ajax call collected
-      $("#updateUniversityName").val(data.schoolName);
+      $("#updateUniversityName").val(data.universityName);
       $("#updateCampusLocation").val(data.campusLocation);
       // Add a submit button to the form
-      $("#updateButtonHolder").html("<button class='submitButton updateSchoolButton' data-id='" + data._id + "'>Submit</button>");
+      $("#schoolUpdateButtonHolder").html("<button class='submitButton updateSchoolButton' data-id='" + data._id + "'>Submit</button>");
     }
   });
 });
