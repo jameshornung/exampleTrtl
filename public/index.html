@@ -24,15 +24,18 @@
         </header>
         <nav>
           <div class="nav-wrapper blue darken-1">
-            <form>
+            <!-- <form>
               <div class="input-field navSearch">
                 <input id="search" type="search" required>
                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
-            </form>
+            </form> -->
           </div>
         </nav>
+
+
+
 
       <div>
         <div class="row inputFormRow">
@@ -40,12 +43,13 @@
          <!-- Prospect Input Form -->
 
           <div class="col m3 inputFormDiv">
-            <h5>Enter New Prospect</h5>
+            <h6 class="center">Enter New Prospect</h6>
             <form>
               First Name:<input type="text" id="firstName"><br>
               Last Name:<input type="text" id="lastName"><br>
               <!-- University:<input type="text" id="university"><br> -->
               <select id="university">
+                <option value="" disabled selected>Select University</option>
                 <option value="Berkeley">Berkeley</option>
                 <option value="Cambridge">Cambridge</option>
                 <option value="Rutgers">Rutgers</option>
@@ -53,6 +57,7 @@
                 <option value="UCF">UCF</option>
               </select>
             <select id="status">
+              <option value="" disabled selected>Select Status</option>
               <option value="Pending HR">Pending HR Interview</option>
               <option value="Pending Tech">Pending Tech Interview</option>
               <option value="Pending Final">Pending Final Interview</option>
@@ -66,7 +71,7 @@
           <!-- Prospect Update Form -->
 
           <div class="col m3 inputFormDiv">
-            <h5>Update Existing Prospect</h5>
+            <h6 class="center">Update Existing Prospect</h6>
             <form>
               First Name:<input type="text" id="updateFirstName"><br>
               Last Name:<input type="text" id="updateLastName"><br>
@@ -94,7 +99,7 @@
 
           <div class="col m3 inputFormDiv">
             <div>
-              <h5>Enter New University</h5>
+              <h6 class="center">Enter New University</h6>
               <form>
                 University Name:<input type="text" id="universityName"><br>
                 Campus Location:<input type="text" id="campusLocation"><br>
@@ -116,7 +121,7 @@
             <!--  University Update Form -->
 
             <div class="col m3 inputFormDiv">
-              <h5>Update Existing University</h5>
+              <h6 class="center">Update Existing University</h6>
               <form>
                 University Name:<input type="text" id="updateUniversityName" class="formInput"><br>
                 Campus Location:<input type="text" id="updateCampusLocation" class="formInput"><br>
@@ -133,6 +138,17 @@
 
             <div class="col m4">
               <h5>Filter Prospects</h5>
+
+              <div class="searchBar">
+                <form>
+                  <div class="input-field navSearch">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                  </div>
+                </form>
+              </div>
+              
               <button id="allProspects" class="filterButton">Show All Prospects</button>
               <button id="allSchools" class="filterButton">Show All Schools</button>
               

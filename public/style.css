@@ -13,13 +13,17 @@ header{
 	margin-bottom: 0px;
 }
 
-.navSearch{
-	width: 25%;
-}
-
 /*++++++++++
 Input Forms
 ++++++++++*/
+
+/*.navSearch{
+	width: 90%;
+}*/
+
+input#search{
+	height: 40px !important;
+}
 
 .inputFormRow{
 	margin-top: 30px;
