@@ -17,12 +17,8 @@ header{
 Input Forms
 ++++++++++*/
 
-/*.navSearch{
-	width: 90%;
-}*/
-
-input#search{
-	height: 40px !important;
+#searchByNameInput{
+	width: 50%;
 }
 
 .inputFormRow{

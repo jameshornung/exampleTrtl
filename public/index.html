@@ -139,16 +139,11 @@
             <div class="col m4">
               <h5>Filter Prospects</h5>
 
-              <div class="searchBar">
-                <form>
-                  <div class="input-field navSearch">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                  </div>
-                </form>
-              </div>
-              
+              <form class="col s12">
+                Search By Name:<input type="text" id="searchByNameInput">
+                <button id="searchByNameButton">Search</button>
+              </form>
+
               <button id="allProspects" class="filterButton">Show All Prospects</button>
               <button id="allSchools" class="filterButton">Show All Schools</button>
               

@@ -1,4 +1,11 @@
 //++++++++++++++++++++
+// GLOBAL VARIABLES
+//++++++++++++++++++++
+
+var resultsSection = document.getElementById("results");
+var request = new XMLHttpRequest();
+
+//++++++++++++++++++++
 // MATERIALIZE FUNTIONALITY
 //++++++++++++++++++++
 
@@ -10,17 +17,74 @@
 // CLICK EVENTS
 //++++++++++++++++++++
 
-$(document).on("click", "#allProspects", function(){
-  $("#results").empty();
+// $(document).on("click", "#allProspects", function(){
+//   $("#results").empty();
 
-  $.getJSON("/all", function(data) {
+//   $.getJSON("/all", function(data) {
 
-    for (var i = 0; i < data.length; i++) {
-      $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
-      data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
+//     for (var i = 0; i < data.length; i++) {
+//       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
+//       data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
+//     }
+//   })
+// });
+
+// =========================
+// REFACTOR
+// =========================
+
+document.getElementById("allProspects").addEventListener("click", function(){
+
+  resultsSection.innerHTML = "";
+
+  // var request = new XMLHttpRequest();
+  request.open('GET', 'all', true);
+
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      // Success!
+      var data = JSON.parse(request.responseText);
+      
+
+      for (var i = 0; i < data.length; i++) {
+
+        var candidate = document.createElement("P");
+
+        console.log(candidate);
+
+        // candidate.data-id = data[i]_id;
+        // candidate.class = dataentry;
+        var test = document.createTextNode(data[i].firstName + " " + data[i].lastName);
+        candidate.appendChild(test);
+
+        // var fn = document.createTextNode(data[i].firstName + " ");
+        // var ln = document.createTextNode(data[i].lastName) + " ";
+        // var uni = document.createTextNode(data[i].university + " ");
+        // var status = document.createTextNode(data[i].status + " ");
+
+        // var display = document.createTextNode(fn + ln + uni + status);
+
+        // candidate.appendChild(display);
+
+        resultsSection.appendChild(candidate);
+      // $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
+      // data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
+      }
     }
-  })
+    else {
+      console.log("error")
+    }
+  };
+
+  // request.onerror = function() {
+  //   // There was a connection error of some sort
+  // };
+
+  request.send();
 });
+
+
+
 
 //Click add-prospect button (submit entry form)
 $(document).on("click", "#addProspect", function() {
