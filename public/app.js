@@ -13,78 +13,63 @@ var request = new XMLHttpRequest();
 
 
 
-//++++++++++++++++++++
+// ++++++++++++++++++++
 // CLICK EVENTS
-//++++++++++++++++++++
+// ++++++++++++++++++++
 
-// $(document).on("click", "#allProspects", function(){
-//   $("#results").empty();
-
-//   $.getJSON("/all", function(data) {
-
-//     for (var i = 0; i < data.length; i++) {
-//       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
-//       data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
-//     }
-//   })
-// });
-
-// =========================
-// REFACTOR
-// =========================
+// All Candidates - NO jQuery
 
 document.getElementById("allProspects").addEventListener("click", function(){
 
   resultsSection.innerHTML = "";
 
-  // var request = new XMLHttpRequest();
   request.open('GET', 'all', true);
 
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
-      // Success!
+
+      var resultTitle = document.createElement("h4");
+      var titleText = document.createTextNode("All Candidates");
+      resultTitle.appendChild(titleText);
+      resultsSection.appendChild(resultTitle);
+
       var data = JSON.parse(request.responseText);
       
-
       for (var i = 0; i < data.length; i++) {
 
-        var candidate = document.createElement("P");
+        var candidate = document.createElement("p");
 
-        console.log(candidate);
+        var deleteOption = document.createElement("span");
+        var deleteText = document.createTextNode("Delete");
+        deleteOption.setAttribute("class", "deleteCandidate");
+        deleteOption.appendChild(deleteText);
 
-        // candidate.data-id = data[i]_id;
-        // candidate.class = dataentry;
-        var test = document.createTextNode(data[i].firstName + " " + data[i].lastName);
-        candidate.appendChild(test);
+        var updateOption = document.createElement("span");
+        var updateText = document.createTextNode("Update");
+        updateOption.setAttribute("class", "updateCandidate");
+        updateOption.appendChild(updateText);
 
-        // var fn = document.createTextNode(data[i].firstName + " ");
-        // var ln = document.createTextNode(data[i].lastName) + " ";
-        // var uni = document.createTextNode(data[i].university + " ");
-        // var status = document.createTextNode(data[i].status + " ");
-
-        // var display = document.createTextNode(fn + ln + uni + status);
-
-        // candidate.appendChild(display);
+        var candidateInfo = document.createTextNode(data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status);
+        
+        candidate.setAttribute("data-id", data[i]._id);
+        candidate.appendChild(candidateInfo);
+        candidate.appendChild(deleteOption);
+        candidate.appendChild(updateOption);
 
         resultsSection.appendChild(candidate);
-      // $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
-      // data[i]._id + ">" + data[i].firstName + " " + data[i].lastName + " " + data[i].university + " " + data[i].status + " " + "</span><span class=deleter>Delete</span><span class=update>Edit</span></p>");
       }
-    }
+    } 
     else {
-      console.log("error")
+      console.log("server error")
     }
   };
 
-  // request.onerror = function() {
-  //   // There was a connection error of some sort
-  // };
+  request.onerror = function() {
+    // There was a connection error of some sort
+  };
 
   request.send();
 });
-
-
-
 
 //Click add-prospect button (submit entry form)
 $(document).on("click", "#addProspect", function() {
@@ -113,7 +98,7 @@ $(document).on("click", "#addProspect", function() {
 });
 
 // Click "Delete" (delete a prospect)
-$(document).on("click", ".deleter", function() {
+$(document).on("click", ".deleteCandidate", function() {
   // Save the p tag that encloses the button
   var selected = $(this).parent();
   // Make an AJAX GET request to delete the specific prospect
@@ -136,7 +121,7 @@ $(document).on("click", ".deleter", function() {
 });
 
 // Click "Edit" (update a prospect)
-$(document).on("click", ".update", function() {
+$(document).on("click", ".updateCandidate", function() {
   // Save the p tag that encloses the button
   var selected = $(this).parent();
   // console.log("selected = ", selected)
@@ -246,9 +231,6 @@ $(document).on("click", "#addUniversity", function() {
     $("#campusLocation").val("");
   });
 });
-
-
-// ======= Work in Progress
 
 // Click "Delete" (delete a prospect)
 $(document).on("click", ".deleteSchool", function() {
