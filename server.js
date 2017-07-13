@@ -6,6 +6,17 @@ var express = require("express");
 var mongojs = require("mongojs");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
+var mongoose = require("mongoose");
+
+//++++++++++++++++++++
+//MODELS
+//++++++++++++++++++++
+
+var Candidate = require("./models/Candidate.js")
+
+//++++++++++++++++++++
+//DECLARE THE APP
+//++++++++++++++++++++
 
 var app = express();
 
@@ -162,16 +173,71 @@ app.get("/find-one-school/:id", function(req, res) {
 //Post Requests
 //-----
 
+// ++++++++++++++++++++++++
+// CURRENT PROJECT - PRIORITY #1!!!!!!
+// ++++++++++++++++++++++++
+
+// THIS IS THE ORIGINAL FUNCTION AND WORKS JUST FINE (DOES NOT USE A SCHEMA, MODEL, MONGOOOSE, ETC)
+// ======================
+
+// app.post("/submit", function(req, res) {
+//   db.prospects.insert(req.body, function(error, saved) {
+//     if (error) {
+//       console.log(error);
+//     }
+//     else {
+//       res.send(saved);
+//     }
+//   });
+// });
+
+// ======================
+
+// THIS IS THE ATTEMPT AT PLUGGING IN A SCHEMA, THIS IS THE ROUTE I NEED TO MAKE WORK
+
 app.post("/submit", function(req, res) {
-  db.prospects.insert(req.body, function(error, saved) {
-    if (error) {
-      console.log(error);
+
+  var newCandidate = new Candidate(req.body);
+  // Captures info correctly: verified
+  console.log("New Candidate: ", newCandidate);
+
+  newCandidate.save(function(err, doc){
+    if (err){
+      // This route runs if you force an error (ie leave name field blank)
+      console.log("Save Error: ", err);
     }
-    else {
-      res.send(saved);
+    else{
+      // This else statement is not running, even if there is no error message?????
+      console.log("Saved: ", doc);
+      // res.send(doc);
     }
-  });
+  })
 });
+
+// ======================
+
+// These is a test to narrow down the issue....
+
+// This works to insert a candidate into the prospects collection, but does not follow the schema rules
+
+// app.post("/submit", function(req, res) {
+
+//   var newCandidate = new Candidate(req.body);
+//   // Captures info correctly: verified
+//   // console.log("New Candidate: ", newCandidate);
+
+//   db.prospects.insert(newCandidate, function(error, saved){
+//     if (error){
+//       console.log (error);
+//     }
+//     else{
+//       res.send(saved)
+//     }
+//   })
+// });
+
+// END OF PROJECT ONE, THE FOLLOWING ROUTES CAN BE REFACTORED AFTER WE MAKE THIS ONE WORK
+// =================================================================================================
 
 app.post("/update/:id", function(req, res) {
   db.prospects.update({

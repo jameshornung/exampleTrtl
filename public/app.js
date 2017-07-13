@@ -17,7 +17,7 @@ var request = new XMLHttpRequest();
 // CLICK EVENTS
 // ++++++++++++++++++++
 
-// All Candidates - NO jQuery
+// All Candidates - jQuery removed
 
 document.getElementById("allProspects").addEventListener("click", function(){
 
@@ -70,6 +70,10 @@ document.getElementById("allProspects").addEventListener("click", function(){
 
   request.send();
 });
+
+// +++++++++++++++++++++++++++++++++++++++++++++
+// PROJECT #3 REMOVE ALL JQUERY FROM THE FOLLOWING FUNCTIONS - SHOULD BE ABLE TO USE FUNCTION ABOVE AS A GUIDE
+// +++++++++++++++++++++++++++++++++++++++++++++
 
 //Click add-prospect button (submit entry form)
 $(document).on("click", "#addProspect", function() {
