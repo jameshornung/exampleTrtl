@@ -8,6 +8,8 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+mongoose.Promise = Promise;
+
 //++++++++++++++++++++
 //MODELS
 //++++++++++++++++++++
@@ -37,12 +39,35 @@ app.use(express.static("public"));
 var databaseUrl = "trtlJR";
 var collections = ["prospects", "schools"];
 
-// Hook mongojs config to db variable
-var db = mongojs(databaseUrl, collections);
+// +++++++++++++++++
+// CONFIG WITH MONGOJS (ORIGINAL SET UP)
+// +++++++++++++++++
 
-// Log any mongojs errors to console
+// // Hook mongojs config to db variable
+// var db = mongojs(databaseUrl, collections);
+
+// // Log any mongojs errors to console
+// db.on("error", function(error) {
+//   console.log("Database Error:", error);
+// });
+
+// +++++++++++++++++
+// CONFIG WITH MONGOOSE
+// +++++++++++++++++
+
+// THIS is the connection we need to use - the old connection (above) currently works for our search routes
+
+mongoose.connect("mongodb://localhost/trtlJR");
+var db = mongoose.connection;
+
+// Show any mongoose errors
 db.on("error", function(error) {
-  console.log("Database Error:", error);
+  console.log("Mongoose Error: ", error);
+});
+
+// Once logged in to the db through mongoose, log a success message
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
 });
 
 //++++++++++++++++++++
@@ -105,7 +130,7 @@ app.get("/find-one/:id", function(req, res) {
 app.get("/filter/", function(req, res) {
 
   var query = {};
-  console.log("req.query", req.query)
+  // console.log("req.query", req.query)
 
   if(req.query.university) { query.university = req.query.university }
   if(req.query.status){ query.status = req.query.status }
