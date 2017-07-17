@@ -11,8 +11,6 @@ var request = new XMLHttpRequest();
 
  $('select').material_select();
 
-
-
 // ++++++++++++++++++++
 // CLICK EVENTS
 // ++++++++++++++++++++
@@ -30,7 +28,7 @@ document.getElementById("generateUniversities").addEventListener("click", functi
 
       var disabledOption = document.createElement("option");
       disabledOption.setAttribute("class", "universityDropdown");
-      disabledOption.setAttribute("value", "diabled select");
+      disabledOption.setAttribute("value", "");
 
       var disabledOptionText = document.createTextNode("Select University")
 
@@ -121,31 +119,53 @@ document.getElementById("allProspects").addEventListener("click", function(){
   request.send();
 });
 
-//Click add-prospect button (submit entry form)
-$(document).on("click", "#addProspect", function() {
-  $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "/submit",
-    data: {
-      firstName: $("#firstName").val(),
-      lastName: $("#lastName").val(),
-      university: $("#university").val(),
-      status: $("#status").val(),
-      created: Date.now()
-    }
-  })
-  .done(function(data) {
-    
-    $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
-      data._id + ">" + data.firstName + " " + data.lastName + " " + data.university + " " + data.status + " " + "</span><span class=deleter updateProspect>Delete</span><span class=update updateProspect>Edit</span></p>");
+// REFACTOR THIS ONE===========================================================
 
-    $("#firstName").val("");
-    $("#lastName").val("");
-    $("#university").val("");
-    $("#status").val("");
-  });
-});
+//Click add-prospect button (submit entry form)
+// $(document).on("click", "#addProspect", function() {
+//   $.ajax({
+//     type: "POST",
+//     dataType: "json",
+//     url: "/submit",
+//     data: {
+//       firstName: $("#firstName").val(),
+//       lastName: $("#lastName").val(),
+//       university: $("#university").val(),
+//       status: $("#status").val(),
+//       created: Date.now()
+//     }
+//   })
+//   .done(function(data) {
+    
+//     $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
+//       data._id + ">" + data.firstName + " " + data.lastName + " " + data.university + " " + data.status + " " + "</span><span class=deleter updateProspect>Delete</span><span class=update updateProspect>Edit</span></p>");
+
+//     $("#firstName").val("");
+//     $("#lastName").val("");
+//     $("#university").val("");
+//     $("#status").val("");
+//   });
+// });
+
+// +++++++++++++++++++++++++++++
+// WORK IN PROGRESS - REFACTOR OF ABOVE JQUERY CODE
+// +++++++++++++++++++++++++++++
+
+document.getElementById("addProspect").addEventListener("click", function(){
+
+  var data = "firstName=" + document.getElementById("firstName").value + "&lastName=" + document.getElementById("lastName").value + "&university=" + document.getElementById("university").value + "&status=" + document.getElementById("status").value;
+
+      // firstName: $("#firstName").val(),
+      // lastName: $("#lastName").val(),
+      // university: $("#university").val(),
+      // status: $("#status").val(),
+      // created: Date.now()
+
+  request.open('POST', '/submit', true);
+  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+  // request.send("firstName=Tryit&lastName=Out&university=Texas&status=PendingTech");
+  request.send(data);
+  })
 
 // Click "Delete" (delete a prospect)
 $(document).on("click", ".deleteCandidate", function() {

@@ -12,6 +12,11 @@ var UniversitySchema = new Schema({
     type: String,
     required: true
   },
+  program: {
+    type: Array,
+    // default: ["FSF", "DATA", "UI/UX"]
+    required: true
+  },
   modified: {
     type: Date,
     default: Date.now()
