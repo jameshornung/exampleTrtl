@@ -44,6 +44,9 @@
 
           <div class="col m3 inputFormDiv">
             <h6 class="center">Enter New Prospect</h6>
+
+            <button id="generateUniversities">Generate Universities</button>
+
             <form>
               First Name:<input type="text" id="firstName"><br>
               Last Name:<input type="text" id="lastName"><br>
@@ -52,15 +55,15 @@
               <!-- PROJECT #2 - POPULATE THESE OPTIONS BY PULLING FROM THE UNIVERSITY COLLECTION -->
               <!-- ++++++++++++++++++++++++++++++++++++++++++++ -->
 
-              <select id="university">
-                <option value="" disabled selected>Select University</option>
+              <select class="browser-default" id="university">
+                <!-- <option value="" disabled selected>Select University</option>
                 <option value="Berkeley">Berkeley</option>
                 <option value="Cambridge">Cambridge</option>
                 <option value="Rutgers">Rutgers</option>
                 <option value="Texas">Texas</option>
-                <option value="UCF">UCF</option>
+                <option value="UCF">UCF</option> -->
               </select>
-            <select id="status">
+            <select class="browser-default" id="status">
               <option value="" disabled selected>Select Status</option>
               <option value="Pending HR">Pending HR Interview</option>
               <option value="Pending Tech">Pending Tech Interview</option>
@@ -142,7 +145,7 @@
 
             <div class="col m4">
               <h5>Filter Prospects</h5>
-              
+
               <!-- ++++++++++++++++++++++++++++++++++++++++++++ -->
               <!-- PROJECT #4 - WRITE A FUNCTION TO QUERY THE DATABASE BASED ON THIS INPUT -->
               <!-- ++++++++++++++++++++++++++++++++++++++++++++ -->

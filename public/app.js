@@ -19,6 +19,56 @@ var request = new XMLHttpRequest();
 
 // All Candidates - jQuery removed
 
+document.getElementById("generateUniversities").addEventListener("click", function(){
+
+  request.open('GET', 'all-schools', true);
+
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+
+      var data = JSON.parse(request.responseText);
+
+      var disabledOption = document.createElement("option");
+      disabledOption.setAttribute("class", "universityDropdown");
+      disabledOption.setAttribute("value", "diabled select");
+
+      var disabledOptionText = document.createTextNode("Select University")
+
+      disabledOption.appendChild(disabledOptionText);
+      document.getElementById("university").appendChild(disabledOption);
+      
+      for (var i = 0; i < data.length; i++) {
+
+        var universityOption = document.createElement("option");
+        console.log(universityOption);
+
+        universityOption.setAttribute("data-id", data[i]._id);
+        universityOption.setAttribute("class", "universityDropdown");
+        
+        var universityNameText = document.createTextNode(data[i].universityName);
+        universityOption.appendChild(universityNameText);
+
+        document.getElementById("university").appendChild(universityOption);
+        $('select').material_select();
+      }
+    } 
+    else {
+      console.log("server error")
+    }
+  };
+
+  request.onerror = function() {
+    // There was a connection error of some sort
+  };
+
+  request.send();
+});
+
+// +++++++++++++++++++++++++++++++++++++++++++++
+// PROJECT #3 REMOVE ALL JQUERY FROM THE FOLLOWING FUNCTIONS - SHOULD BE ABLE TO USE FUNCTION ABOVE AS A GUIDE
+// +++++++++++++++++++++++++++++++++++++++++++++
+
+// Click Generate Universities button (update selector)
 document.getElementById("allProspects").addEventListener("click", function(){
 
   resultsSection.innerHTML = "";
@@ -70,10 +120,6 @@ document.getElementById("allProspects").addEventListener("click", function(){
 
   request.send();
 });
-
-// +++++++++++++++++++++++++++++++++++++++++++++
-// PROJECT #3 REMOVE ALL JQUERY FROM THE FOLLOWING FUNCTIONS - SHOULD BE ABLE TO USE FUNCTION ABOVE AS A GUIDE
-// +++++++++++++++++++++++++++++++++++++++++++++
 
 //Click add-prospect button (submit entry form)
 $(document).on("click", "#addProspect", function() {
