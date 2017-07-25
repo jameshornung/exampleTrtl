@@ -62,10 +62,6 @@ document.getElementById("generateUniversities").addEventListener("click", functi
   request.send();
 });
 
-// +++++++++++++++++++++++++++++++++++++++++++++
-// PROJECT #3 REMOVE ALL JQUERY FROM THE FOLLOWING FUNCTIONS - SHOULD BE ABLE TO USE FUNCTION ABOVE AS A GUIDE
-// +++++++++++++++++++++++++++++++++++++++++++++
-
 // Click Generate Universities button (update selector)
 document.getElementById("allProspects").addEventListener("click", function(){
 
@@ -119,51 +115,13 @@ document.getElementById("allProspects").addEventListener("click", function(){
   request.send();
 });
 
-// REFACTOR THIS ONE===========================================================
-
 //Click add-prospect button (submit entry form)
-// $(document).on("click", "#addProspect", function() {
-//   $.ajax({
-//     type: "POST",
-//     dataType: "json",
-//     url: "/submit",
-//     data: {
-//       firstName: $("#firstName").val(),
-//       lastName: $("#lastName").val(),
-//       university: $("#university").val(),
-//       status: $("#status").val(),
-//       created: Date.now()
-//     }
-//   })
-//   .done(function(data) {
-    
-//     $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
-//       data._id + ">" + data.firstName + " " + data.lastName + " " + data.university + " " + data.status + " " + "</span><span class=deleter updateProspect>Delete</span><span class=update updateProspect>Edit</span></p>");
-
-//     $("#firstName").val("");
-//     $("#lastName").val("");
-//     $("#university").val("");
-//     $("#status").val("");
-//   });
-// });
-
-// +++++++++++++++++++++++++++++
-// WORK IN PROGRESS - REFACTOR OF ABOVE JQUERY CODE
-// +++++++++++++++++++++++++++++
-
 document.getElementById("addProspect").addEventListener("click", function(){
 
   var data = "firstName=" + document.getElementById("firstName").value + "&lastName=" + document.getElementById("lastName").value + "&university=" + document.getElementById("university").value + "&status=" + document.getElementById("status").value;
 
-      // firstName: $("#firstName").val(),
-      // lastName: $("#lastName").val(),
-      // university: $("#university").val(),
-      // status: $("#status").val(),
-      // created: Date.now()
-
   request.open('POST', '/submit', true);
   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-  // request.send("firstName=Tryit&lastName=Out&university=Texas&status=PendingTech");
   request.send(data);
   })
 
@@ -302,21 +260,16 @@ $(document).on("click", "#addUniversity", function() {
   });
 });
 
-// Click "Delete" (delete a prospect)
+// Click "Delete" (delete a university)
 $(document).on("click", ".deleteSchool", function() {
-  // Save the p tag that encloses the button
   var selected = $(this).parent();
-  // Make an AJAX GET request to delete the specific prospect
-  // this uses the data-id of the p-tag, which is linked to the specific prospect
   $.ajax({
     type: "GET",
     url: "/delete-school/" + selected.attr("data-id"),
 
-    // On successful call
     success: function(response) {
       // Remove the p-tag from the DOM
       selected.remove();
-      // Clear the propsect info
       $("#schoolName").val("");
       $("#campusLocation").val("");
     }
@@ -325,16 +278,13 @@ $(document).on("click", ".deleteSchool", function() {
 
 // Click "Edit" (update a school)
 $(document).on("click", ".updateSchool", function() {
-  // Save the p tag that encloses the button
+  
   var selected = $(this).parent();
-  // Make an ajax call to find the prospect
-  // This uses the data-id of the p-tag, which is linked to the specific prospect
   $.ajax({
     type: "GET",
     url: "/find-one-school/" + selected.attr("data-id"),
     success: function(data) {
       console.log(data);
-      // Fill the inputs on the update form with the data that the ajax call collected
       $("#updateUniversityName").val(data.universityName);
       $("#updateCampusLocation").val(data.campusLocation);
       // Add a submit button to the form
