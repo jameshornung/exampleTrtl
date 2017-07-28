@@ -1,0 +1,4 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["jXkHn"]); }
+
+__d('VideoPivotsRegister',['Arbiter','AttachmentRelatedShareConstants','destroyOnUnload','SubscriptionsHandler'],(function a(b,c,d,e,f,g){var h={registerVideoUnit:function i(j,k,l){var m=0,n=new (c('SubscriptionsHandler'))(),o=function p(){return n.release();};n.addSubscriptions(j.addListener('updateStatus',function(p){if(m<k&&p.position>=k){c('Arbiter').inform(c('AttachmentRelatedShareConstants').FBVIDEO_VIEW,{fbvideo_id:j.getVideoID(),attachment:j.getRootNode(),in_smooth_injection_experiment:l});o();}m=p.position;}));c('destroyOnUnload')(o);}};f.exports=h;}),null);
+__d("XBusinessLocationManagerController",["XController"],(function a(b,c,d,e,f,g){f.exports=c("XController").create("\/location_manager\/",{business_id:{type:"FBID"},page_id:{type:"FBID"}});}),null);

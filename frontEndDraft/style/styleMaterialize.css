@@ -1,0 +1,257 @@
+html, body{
+	width:100vw;
+	height:100vh;
+	margin:0;
+	padding:0;
+	background-color:#ecf0f1;
+}
+.container{
+	width:100vw;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+}
+.row{
+	width:100vw;
+	padding:0;
+	margin:0;
+}
+
+/*Side Nav*/
+/*===========================================*/
+.background{
+	background-color:#11c8e7;
+	margin-bottom:20px;
+}
+
+#sideBar{
+	width:250px;
+}
+.side-nav{
+	width:200px;
+	background-color:black;
+}
+
+.side-nav li a{
+	color:#919191;
+	text-align:center;
+}
+
+.sideLinks:hover{
+	background-color:rgba(17, 200, 231, .6);
+
+}
+
+.side-nav li>a>i.material-icons{
+	color:#919191;
+	padding:0;
+	margin:0;
+	margin-right:20px;
+	text-align:center;
+}
+
+.side-nav .user-view .circle, .side-nav .userView .circle{
+	width:45px;
+	height:45px;
+	margin:0;
+	padding:0;
+}
+
+div.user-view{
+	height:63px;
+	margin:0;
+	position:relative;
+}
+
+.user-view ul li img{
+	position:absolute;
+		top:10px;
+		left:25px; 	
+}
+
+.user-view ul li span{
+	position:absolute;
+		top:5px;
+		right:50px;
+}
+
+.circle {
+	position:absolute;
+		top:10px;
+		left:25px; 
+}
+
+
+/*Top Nav*/
+/*==========================================*/
+.navbar-fixed{
+	position:relative;	
+}
+nav{
+	position:absolute;
+	right:0px;
+	width:85vw;
+	margin:0;
+	border-bottom: 1px solid #919191;
+}
+
+div.nav-wrapper{
+	margin:0;
+	padding:0;
+	width:85vw;
+}
+#logo{
+	width:60px;
+	margin-top:10px;
+}
+
+#nav-mobile a{
+	color:#919191;
+}
+
+#search {
+	width:100px;
+	margin:0;
+	border:none;
+}
+
+.input-field.active{
+	color:#11c8e7;
+}
+
+/*lower tab section*/
+.tabs{
+	margin:0;
+	padding-top:40px;
+	height:80px;
+
+}
+#rightNav li a{
+	color: #919191;
+}
+
+.tabs .tab a{
+	color: #919191;
+	margin-right:40px;
+}
+
+.tabs .tab a:hover{
+	color: #11c8e7;
+}
+
+.tabs .tab a.active{
+	color: #11c8e7;
+}
+
+.tabs .indicator{
+	background-color: #11c8e7;
+}
+
+
+
+
+/*MAIN CONTENT*/
+/*===========================*/
+
+#mainContent{
+	position:absolute;
+		top:144px;
+		left:200px;
+	margin:0;
+	padding:30px;
+	width:1100px;
+	height:510px;
+	overflow:scroll;
+	/*background-color:#919191;	*/
+}
+
+
+#candidateTableHeader {
+	background-color:black;
+	color:#11c8e7;
+}
+#candidateTable{
+	border-left: .1px solid #dbdbdb;
+	border-right: .1px solid #dbdbdb;
+}
+
+#candidateTable tr{
+	padding:0;
+	margin:0;
+}
+
+#candidateTable th{
+	text-align:center;
+	width: 50px;
+	height:50px;
+}
+#candidateTable td{
+	width: 50px;
+	height:50px;
+	padding:0;
+}
+#candidateTableHeader:hover{
+	background-color:black;
+}
+#candidateTable tr:hover{
+	background-color:rgba(17, 200, 231, .4);
+}
+
+
+/*MEDIA QUERIES*/
+/*====================================*/
+
+ @media only screen and  (max-width: 980px) {
+	#logo{
+		width:70px;
+		margin-top:20px;
+	}
+
+ 	nav {
+		position:absolute;
+		right:0px;
+		width:100vw;
+		height:80px;
+		margin:0;
+		border-bottom: 1px solid #919191;
+	}
+
+	div.nav-wrapper{
+		margin:0;
+		padding:0;
+		width:100vw;
+	}
+
+	#mainContent{
+		position:absolute;
+			top:144px;
+			left:0px;
+		margin:0;
+		padding:30px;
+		padding-left:0;
+		width:100vw;
+		height:100vw;
+		overflow:scroll;
+		/*background-color:white;*/	
+	}
+
+	.table {
+		position:absolute;
+			top:50px;
+			left:40px;
+		width:100vw;
+		margin:0;
+		padding:0;
+	}
+
+	#candidateTable th{
+	text-align:center;
+	width: 100px;
+	}
+
+	#candidateTable td{
+	text-align:center;
+	width: 100px;
+	}
+    
+  }
