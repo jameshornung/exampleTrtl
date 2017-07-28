@@ -14,7 +14,7 @@ var UniversitySchema = new Schema({
   },
   program: {
     type: Array,
-    // default: ["FSF", "DATA", "UI/UX"]
+    default: ["FSF", "DATA", "UI/UX"],
     required: true
   },
   modified: {
